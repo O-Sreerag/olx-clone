@@ -3,7 +3,7 @@
 import Header from '../Components/Header/Header'
 import View from '../Components/View/View'
 
-function ViewPost(props: any) {
+function ViewPost() {
     return (
         <div>
             <Header />

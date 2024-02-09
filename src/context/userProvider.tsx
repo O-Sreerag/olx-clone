@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, ReactNode } from "react";
+import React, {useState, useEffect, ReactNode } from "react";
 import UserContext from "./userContext.tsx";
 
 interface UserProviderProps {
