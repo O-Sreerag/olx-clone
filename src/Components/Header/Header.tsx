@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useContext, useState} from 'react';
+import UserContext from '../../context/userContext';
+import supabase from '../../config/supabase';
 
 import './Header.css';
 import OlxLogo from '../../assets/OlxLogo';
@@ -6,7 +8,27 @@ import Search from '../../assets/Search';
 import Arrow from '../../assets/Arrow';
 import SellButton from '../../assets/SellButton';
 import SellButtonPlus from '../../assets/SellButtonPlus';
+
+
 function Header() {
+  const { user } = useContext(UserContext);
+  const [showLogout, setShowLogout] = useState(false);
+
+  const handleLogout = async () => {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        throw error;
+      }
+      // Clear the local storage or perform any other necessary cleanup
+      localStorage.removeItem('supabaseSession');
+      setShowLogout(false);
+      // Optionally, redirect the user to the login page or home page
+    } catch (error) {
+      console.error('Error logging out:', (error as Error).message);
+    }
+  };
+
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">
@@ -33,10 +55,21 @@ function Header() {
           <span> ENGLISH </span>
           <Arrow></Arrow>
         </div>
-        <div className="loginPage">
-          <span>Login</span>
-          <hr />
-        </div>
+        {user ? (
+          <div className="userSection">
+            <span onClick={() => setShowLogout(!showLogout)}>{user.email}</span>
+            {showLogout && (
+              <button className="logoutButton" onClick={handleLogout}>
+                Logout
+              </button>
+            )}
+          </div>
+        ) : (
+          <div className="loginPage">
+            <span>Login</span>
+            <hr />
+          </div>
+        )}
 
         <div className="sellMenu">
           <SellButton></SellButton>

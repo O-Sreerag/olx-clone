@@ -162,3 +162,20 @@
     display: none;
   }
 }
+
+.userSection span {
+  cursor: pointer;
+}
+
+.logoutButton {
+  background-color: #ff3333;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logoutButton:hover {
+  background-color: #cc0000;
+}
