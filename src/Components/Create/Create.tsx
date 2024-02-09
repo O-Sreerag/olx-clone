@@ -1,4 +1,4 @@
-import React, { Fragment, useState, FormEvent } from 'react';
+import { Fragment, useState, FormEvent } from 'react';
 import './Create.css';
 import Header from '../Header/Header';
 import supabase from '../../config/supabase'; // Import the Supabase client

@@ -1,4 +1,4 @@
-import React, { useContext, useState} from 'react';
+import { useContext, useState} from 'react';
 import UserContext from '../../context/userContext';
 import supabase from '../../config/supabase';
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import supabase from '../../config/supabase'; // Import the Supabase client
 import Heart from '../../assets/Heart';
 import './Post.css';
